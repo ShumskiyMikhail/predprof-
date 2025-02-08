@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+{% for msg in get_flashed_messages() %}
+    <div class="flash">{{msg}}</div>
+{% endfor %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Подать заявку
+{% endblock %}
+
+
+{% block body %}
+    <p></p>
+    <p></p>
+    <p></p>
+    <h1>{{ title }}</h1>
+        <div class="containerrr">
+            <form action="/all_items/{{ id_item }}/request" method="post" class="form-contact">
+                <p><label>Предмет: {{ item_name }}</label></p>
+                <p><label>Введите количество:</label> <input type="number" name="quantity" placeholder={{ item_quantity }} value="" required />
+                <p><input type="submit" value="Отправить заявку" />
+            </form>
+        </div>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Мои заявки на добавление предмета
+{% endblock %}
+
+{% block body %}
+    <h1>Список заявок на добавление предмета</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Кто подал</th>
+                <th>Предмет</th>
+                <th>Количество</th>
+                <th>Статус заявки</th>
+                <th>Поменять статус заявки</th>
+            </tr>
+        </thead>
+    <tbody>
+            {% for p in admin_requests %}
+                <tr>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[4] }}</td>
+                    <td>{{ p[5] }}</td>
+                    <td><a href="/admin_requests/{{ p[0] }}/edit_request">Поменять статус</a></td>
+                </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+    <p></p>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Изменить предмет
+{% endblock %}
+
+{% block body %}
+    <p></p>
+    <p></p>
+    <p></p>
+    <h1>{{ title }}</h1>
+        <div class="containerrr">
+            <form action="/all_items/{{ id_item }}/edit" method="post" class="form-contact">
+                <p><label>Введите название предмета:</label> <input type="text" name="namik" placeholder={{item_name}} value="" required />
+                <p><label>Введите количество:</label> <input type="number" name="postik" placeholder={{item_quantity}} value="" required />
+                <fieldset>
+                  <legend>Состояние предмета:</legend>
+
+                  <div>
+                    <input type="radio" id="new" name="drone" value="Новый" checked />
+                    <label for="new">Новый</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="used" name="drone" value="Используемый" />
+                    <label for="used">Используемый</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="broken" name="drone" value="Сломанный" />
+                    <label for="broken">Сломанный</label>
+                  </div>
+
+                </fieldset>
+                <p></p>
+                <fieldset>
+                  <legend>Статус заявки:</legend>
+
+                    <div>
+                    <input type="radio" id="nothing" name="drone2" value="-" />
+                    <label for="nothing">-</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="create" name="drone2" value="Создана" checked />
+                    <label for="create">Создана</label>
+                  </div>
+
+                    <div>
+                    <input type="radio" id="view" name="drone2" value="На рассмотрении" />
+                    <label for="view">На рассмотрении</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="access" name="drone2" value="Одобрена" />
+                    <label for="access">Одобрена</label>
+                  </div>
+
+                    <div>
+                    <input type="radio" id="block" name="drone2" value="Отклонена" />
+                    <label for="block">Отклонена</label>
+                  </div>
+                </fieldset>
+
+                <p><input type="submit" value="Редактировать" />
+            </form>
+        </div>
+        {% for msg in get_flashed_messages() %}
+            <div class="flash">{{msg}}</div>
+        {% endfor %}
+{% endblock %}

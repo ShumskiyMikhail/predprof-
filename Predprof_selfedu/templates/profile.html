@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Профиль
+{% endblock %}
+
+{% block body %}
+    <div class="containerr">
+        <p><a>Учётная запись пользователя: {{ username }}</a></p>
+        <p><a>Почта: {{ email }}</a></p>
+        <p><a>Роль: {{ role2 }}</a></p>
+        <p><a href="/logout">Выйти из профиля</a></p>
+        <p></p>
+    </div>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Все предметы
+{% endblock %}
+
+{% block body %}
+    <h1>Список предметов</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Владелец</th>
+                <th>Предмет</th>
+                <th>Количество</th>
+                <th>Статус</th>
+                <th>Статус заявки на получение</th>
+                <th>Заявитель</th>
+                <th>Количество предметов в заявке</th>
+                {% if role == 1 %}
+                    <th>Удаление</th>
+                    <th>Редактирование</th>
+                    <th>Закрепление предмета за пользователем</th>
+                    <th>Добавить отчёт</th>
+                {% else %}
+                    <th>Подать заяввку</th>
+                {% endif %}
+            </tr>
+        </thead>
+    <tbody>
+        {% for p in inventory %}
+            <tr>
+                <td>{{ p[4] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[2] }}</td>
+                <td>{{ p[3] }}</td>
+                <td>{{ p[6] }}</td>
+                <td>{{ p[5] }}</td>
+                <td>{{ p[7] }}</td>
+                {% if role == 1 %}
+                    <td><a href="/all_items/{{ p[0] }}/delete">Удалить предмет</a></td>
+                    <td><a href="/all_items/{{ p[0] }}/edit">Редактировать</a></td>
+                    <td><a href="/all_items/{{ p[0] }}/fix_user">Закрепить</a></td>
+                    <td><a href="/add_report/{{ p[0] }}">Добавить</a></td>
+                {% else %}
+                    {% if p[3] == "Новый" and p[5] == "-"%}
+                        <td><a href="/all_items/{{ p[0] }}/request">Подать заявку</a></td>
+                    {% elif p[3] == "Сломанный"  %}
+                        <td><a>Предмет нельзя получить так как он сломанный</a></td>
+                    {% elif p[3] == "Используемый"  %}
+                        <td><a>Предмет нельзя получить так как он используется</a></td>
+                    {% else %}
+                        <td><a>Предмет уже занят</a></td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <p></p>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}
+

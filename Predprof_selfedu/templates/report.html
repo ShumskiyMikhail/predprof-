@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Мои отчёты
+{% endblock %}
+
+
+
+{% block body %}
+    <h1>Список отчётов</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Владелец предмета</th>
+                <th>Кто получил</th>
+                <th>Предмет</th>
+                <th>Количество</th>
+                <th>Статус</th>
+                <th>Отчёт</th>
+                <th>Удаление</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for p in report %}
+            <tr>
+                <td>{{ p[2] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[3] }}</td>
+                <td>{{ p[4] }}</td>
+                <td>{{ p[5] }}</td>
+                <td>{{ p[6] }}</td>
+                <td><a href="/report/{{ p[0] }}/delete_report">Удалить</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <p></p>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}

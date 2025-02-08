@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Добавление отчёта
+{% endblock %}
+
+{% block body %}
+    <p></p>
+    <h1>{{ title }}</h1>
+        <div class="container">
+            <form action="/add_report/{{ id_item }}" method="post" class="form-contact">
+                <p>Владелец: {{ owner }}</p>
+                <p>Кому выдал: {{ request }}</p>
+                <p>Предмет: {{ item_name }}</p>
+                <p>Количество: {{ quantity }}</p>
+                <p>Состояние предмета:<input type="text" name="status" value="" required /></p>
+                <p>Введите текст отчёта:</p>
+                <textarea class="resizable-input" type="text" name="report_text" value="" required></textarea>
+                <p><input type="submit" value="Добавить" /></p>
+            </form>
+        </div>
+        {% for msg in get_flashed_messages() %}
+            <div class="flash">{{msg}}</div>
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Добавление предмета
+{% endblock %}
+
+{% block body %}
+    <p></p>
+    <h1>{{ title }}</h1>
+        <div class="containerr">
+            <form action="/add_item" method="post" class="form-contact">
+                <p><label>Введите название предмета:</label> <input type="text" name="name" value="" required /></p>
+                <p><label>Введите количество:</label> <input type="number" name="quantity" value="" required /></p>
+                <fieldset>
+                  <legend>Состояние предмета:</legend>
+
+                  <div>
+                    <input type="radio" id="new" name="drone" value="Новый" checked />
+                    <label for="new">Новый</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="used" name="drone" value="Используемый" />
+                    <label for="used">Используемый</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="broken" name="drone" value="Сломанный" />
+                    <label for="broken">Сломанный</label>
+                  </div>
+                </fieldset>
+
+                <p><input type="submit" value="Добавить" /></p>
+            </form>
+        </div>
+        {% for msg in get_flashed_messages() %}
+            <div class="flash">{{msg}}</div>
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Изменить статус заяыки
+{% endblock %}
+
+{% block body %}
+    <p></p>
+    <p></p>
+    <p></p>
+    <h1>{{ title }}</h1>
+    <div class="containerrr">
+        <form action="/admin_requests/{{ id_request }}/edit_request" method="POST" class="form-contact">
+            <p>Отправил: {{ request_username }}</p>
+            <p>Название предмета: {{ item_name }}</p>
+            <p>Количество: {{ item_quantity }}</p>
+            <p></p>
+
+            <fieldset >
+              <legend>Статус заявки:</legend>
+
+              <div>
+                <input type="radio" id="create" name="status" value="Создана" />
+                <label for="create">Создана</label>
+              </div>
+
+                <div>
+                <input type="radio" id="view" name="status" value="На рассмотрении" checked />
+                <label for="view">На рассмотрении</label>
+              </div>
+
+              <div>
+                <input type="radio" id="access" name="status" value="Одобрена" />
+                <label for="access">Одобрена</label>
+              </div>
+
+                <div>
+                <input type="radio" id="block" name="status" value="Отклонена" />
+                <label for="block">Отклонена</label>
+              </div>
+            </fieldset>
+
+            <p><input type="submit" value="Изменить статус" />
+        </form>
+    </div>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}

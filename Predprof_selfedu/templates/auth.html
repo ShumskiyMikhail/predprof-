@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    Вход
+{% endblock %}
+{% block body %}
+    <h1>{{ title }}</h1>
+        <div class="containerr">
+            <form action="" method="post" class="form-contact">
+               <p>
+                    <label>Email:</label>
+                     <div class="input-wrapper">
+                        <span class="input-icon email-icon"></span>
+                        <input type="text" name="email" placeholder="Введите ваш email" value="" required />
+                     </div>
+                </p>
+               <p>
+                    <label>Пароль:</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon password-icon"></span>
+                        <input type="password" name="psw" placeholder="Введите ваш пароль" value="" required />
+                    </div>
+                 </p>
+                <p><input type="checkbox" name="remainme" /> Запомнить меня</p>
+                <p><input type="submit" value="Войти" /></p>
+                <p><a href="/reg">Регистрация</a></p>
+            </form>
+        </div>
+        {% for msg in get_flashed_messages() %}
+            <div class="flash">{{msg}}</div>
+        {% endfor %}
+{% endblock %}

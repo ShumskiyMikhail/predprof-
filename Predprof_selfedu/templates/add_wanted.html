@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Добавление заявки на добавление предмета
+{% endblock %}
+
+{% block body %}
+    <p></p>
+    <h1>{{ title }}</h1>
+        <div class="containerr">
+            <form action="/add_wanted" method="post" class="form-contact">
+                <p><label>Введите название предмета:</label> <input type="text" name="name" value="" required /></p>
+                <p><label>Введите количество:</label> <input type="number" name="quantity" value="" required /></p>
+                <p><input type="submit" value="Добавить заявку" /></p>
+            </form>
+        </div>
+        {% for msg in get_flashed_messages() %}
+            <div class="flash">{{msg}}</div>
+        {% endfor %}
+{% endblock %}

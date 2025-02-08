@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Все пользователи
+{% endblock %}
+
+{% block body %}
+    <h1>Список пользователей</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Пользователь</th>
+                <th>Закрепление</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in all_users %}
+                <tr>
+                    <td>{{ p[1] }}</td>
+                    <td><a href="/all_items/{{ id_item }}/{{ p[0] }}/fix">Закрепить</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p></p>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}
+

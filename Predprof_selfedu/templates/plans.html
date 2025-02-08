@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>План закупок</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Предмет</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Поставщик</th>
+                <th>Итого</th>
+                <th>Удаление</th>
+            </tr>
+        </thead>
+       <tbody>
+            {% for p in plan %}
+                <tr>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[4] }}</td>
+                    {% set number = p[2] %}
+                    {% set cost = p[3] %}
+                    {% set int_number = number | int %}
+                    {% set int_cost = cost | int %}
+                    <td>{{ int_number * int_cost }} ₽</td>
+                    <td><a href="/plans/{{ p[0] }}/delete_plan">Удалить план</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+    {% endfor %}
+{% endblock %}
+
+

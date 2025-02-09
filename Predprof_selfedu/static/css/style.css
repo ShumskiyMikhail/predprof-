@@ -19,8 +19,8 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-    width: 30%; /* Занимает 30% ширины экрана */
-    max-width: 350px; /* Максимальная ширина для предотвращения чрезмерного растягивания на очень больших экранах */
+    width: 30%;
+    max-width: 350px;
 }
 .form-contact p {
     margin-bottom: 12px;
@@ -176,7 +176,7 @@ a:hover {
 }
 .form-contact fieldset div label {
     display: inline-block;
-    font-weight: normal; /* Нормальное начертание текста для лэйбла радиокнопок */
+    font-weight: normal;
 }
 
 .form-contact input[type="radio"] {

@@ -6,4 +6,5 @@
 	3.установите библиотеки, написав в terminal команду  pip install -r requirements.txt
 	4.запустите flsite.py
 
+ссылка на видео:
 https://vkvideo.ru/video793761999_456239018?list=ln-IBL4Xsg72IZaZD1lc7

@@ -3,6 +3,7 @@
 Инструкция:
 	1.распакуйте zip-файл с проектом и readme файлом
 	2.откройте проект через IDE
-	3.запустите flsite.py
+	3.установите библиотеки, написав в terminal команду  pip install -r requirements.txt
+	4.запустите flsite.py
 
 https://vkvideo.ru/video793761999_456239018?list=ln-IBL4Xsg72IZaZD1lc7
